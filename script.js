@@ -1,73 +1,69 @@
-$(document).ready(function(){
-    $(window).scroll(function(){
-        // sticky navbar on scroll script
-        if(this.scrollY > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
-        }
-        
-        // scroll-up button show/hide script
-        if(this.scrollY > 500){
-            $('.scroll-up-btn').addClass("show");
-        }else{
-            $('.scroll-up-btn').removeClass("show");
-        }
-    });
+console.log('Welcome to 🌡️ Temperature Converter');
 
-    // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
-        // removing smooth scroll on slide-up button click
-        $('html').css("scrollBehavior", "auto");
-    });
+const tempLoad = () => {
+    let fa = document.getElementById('fa');
+    fa.innerHTML = "&#xf2cb";
+    fa.style.color = "#ffa41b";
 
-    $('.navbar .menu li a').click(function(){
-        // applying again smooth scroll on menu items click
-        $('html').css("scrollBehavior", "smooth");
-    });
+    setTimeout(() => {
+        fa.innerHTML = "&#xf2ca;";
+        fa.style.color = "#ffa41b";
+    }, 1000)
 
-    // toggle menu/navbar script
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
+    setTimeout(() => {
+        fa.innerHTML = "&#xf2c9;";
+    }, 2000)
 
-    // typing text animation script
-    var typed = new Typed(".typing", {
-        strings: ["YouTuber", "Developer", "Blogger", "Designer", "Freelancer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+    setTimeout(() => {
+        fa.innerHTML = "&#xf2c8;";
+    }, 3000)
 
-    var typed = new Typed(".typing-2", {
-        strings: ["YouTuber", "Developer", "Blogger", "Designer", "Freelancer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+    setTimeout(() => {
+        fa.innerHTML = "&#xf2c7;";
+        fa.style.color = "#ff5151";
+    }, 4000)
+}
 
-    // owl carousel script
-    $('.carousel').owlCarousel({
-        margin: 20,
-        loop: true,
-        autoplay: true,
-        autoplayTimeOut: 2000,
-        autoplayHoverPause: true,
-        responsive: {
-            0:{
-                items: 1,
-                nav: false
-            },
-            600:{
-                items: 2,
-                nav: false
-            },
-            1000:{
-                items: 3,
-                nav: false
-            }
-        }
-    });
-});
+setInterval(() => {
+    fa.style.color = "#ffa41b";
+    tempLoad();
+}, 5000);
+
+
+tempLoad();
+
+const calculateTemp = () => {
+    const numberTemp = document.getElementById('temp').value;
+    // console.log(numberTemp);
+
+    const tempSelected = document.querySelector('#temp_diff');
+    const valeTemp = temp_diff.options[tempSelected.selectedIndex].value;
+    // console.log(valeTemp);
+
+
+    // Convert temperature from Celcius to Fahrenheit
+    const celTOfah = (cel) => {
+        let fahrenheit = (cel * (9 / 5) + 32);
+        return fahrenheit;
+    }
+
+    // Convert temperature from Fahrenheit to Celsius
+    const fahTOcel = (fehr) => {
+        let celsius = ((fehr - 32) * 5 / 9);
+        return celsius;
+    }
+
+    let result;
+    if (valeTemp == "cel") {
+        result = celTOfah(numberTemp);
+        document.getElementById('resultContainer').innerHTML = `= ${result}°Fahrenheit`;
+    } else {
+        result = fahTOcel(numberTemp);
+        document.getElementById('resultContainer').innerHTML = `= ${result}°Celsius`;
+    }
+
+    setTimeout(() => {
+        window.location.reload();
+    }, 1500);
+}
+
