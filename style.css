@@ -1,0 +1,39 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+header {
+	background-color: red;
+	color: blue;
+	padding: 20px;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 20px;
+}
+nav a {
+	color: yellow;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+main {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+main{
+	color: voilet;
+	background-color: orange;
+	padding:0;
+}
+
+
